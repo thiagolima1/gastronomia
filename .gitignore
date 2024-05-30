@@ -1,7 +1,10 @@
-*.*~
+.idea
 
 *.pyc
 
-pucache
 
-.idea
+*.*~
+
+
+pycache
+
