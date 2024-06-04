@@ -94,3 +94,15 @@ class MovimentoSerializer(serializers.ModelSerializer):
         read_only_fields = ['ativo']
 
 
+class ItemNotaFiscalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ItemNotaFiscal
+        fields = '__all__'
+        read_only_fields = ['ativo']
+
+
+class NotaFiscalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NotaFiscal
+        fields = '__all__'
+        read_only_fields = ['ativo']
