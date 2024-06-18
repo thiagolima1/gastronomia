@@ -22,6 +22,7 @@ import apis.urls
 
 urlpatterns = [
     path('', include(apis.urls)),
+    path('api/v1/', include(apis.urls)),
     path('api/v1/', include(router.urls)),
     path('admin', admin.site.urls),
     path('auth/', include('rest_framework.urls'))

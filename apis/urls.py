@@ -3,7 +3,7 @@ from rest_framework.routers import SimpleRouter
 from .views import *
 
 router = SimpleRouter()
-router.register('receitaingrediente', ReceitaIngredienteViewSet)
+router.register('receitasingrediente', ReceitaIngredienteViewSet)
 router.register('tiposculinaria', TipoCulinariaViewSet)
 router.register('receitas', ReceitaViewSet)
 router.register('unidadesmedida', UnidadeMedidaViewSet)
@@ -19,8 +19,14 @@ router.register('movimentos', MovimentoViewSet)
 router.register('notasfiscais', NotaFiscalViewSet)
 router.register('itensnotasfiscais', ItemNotaFiscalViewSet)
 
+
 urlpatterns = [
     path("", index),
+    path('custosdiario/', CustoDiarioApiView.as_view(), name='custosdiario'),
+    path('posicaoestoque/', PosicaoEstoqueApiView.as_view(), name='posicaoestoque'),
+    path('confirmaaula/<int:pk>/', ConfirmaAulaApiView.as_view(), name='confirmaaula'),
+    path('cancelaaula/<int:pk>/', CancelaAulaApiView.as_view(), name='cancelaaula'),
+    path('detalhesaula/<int:pk>/', DetalhesAulaApiView.as_view(), name='detalhesaula'),
+    path('necessidadecompra/', NecessidadeCompraApiView.as_view(), name='necessidadecompra'),
+    path('entradanota/', EntradaNotaFiscalApiView.as_view(), name='entradanota'),
 ]
-
-
