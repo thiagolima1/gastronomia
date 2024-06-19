@@ -5,8 +5,6 @@ from django.utils.dateparse import parse_date
 from rest_framework import viewsets, status, generics, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
-from .permissions import IsInAuthorizedGroup
 from .serializers import *
 from .funcoes import *
 from django.shortcuts import render
@@ -18,7 +16,6 @@ def index(request):
 
 
 class ReceitaIngredienteViewSet(viewsets.ModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     queryset = ReceitaIngrediente.objects.filter(ativo=True)
     serializer_class = ReceitaIngredienteSerializer
 
@@ -31,7 +28,6 @@ class ReceitaIngredienteViewSet(viewsets.ModelViewSet):
 
 
 class TipoCulinariaViewSet(viewsets.ModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     queryset = TipoCulinaria.objects.filter(ativo=True)
     serializer_class = TipoCulinariaSerializer
 
@@ -44,7 +40,6 @@ class TipoCulinariaViewSet(viewsets.ModelViewSet):
 
 
 class ReceitaViewSet(viewsets.ModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     queryset = Receita.objects.filter(ativo=True)
     serializer_class = ReceitaSerializer
 
@@ -57,7 +52,6 @@ class ReceitaViewSet(viewsets.ModelViewSet):
 
 
 class UnidadeMedidaViewSet(viewsets.ModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     queryset = UnidadeMedida.objects.filter(ativo=True)
     serializer_class = UnidadeMedidaSerializer
 
@@ -70,7 +64,6 @@ class UnidadeMedidaViewSet(viewsets.ModelViewSet):
 
 
 class ProdutoViewSet(viewsets.ModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     queryset = Produto.objects.filter(quantidade__gt=0) | Produto.objects.filter(ativo=True)
     serializer_class = ProdutoSerializer
 
@@ -83,7 +76,6 @@ class ProdutoViewSet(viewsets.ModelViewSet):
 
 
 class PrecoViewSet(viewsets.ModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     queryset = Preco.objects.filter(ativo=True)
     serializer_class = PrecoSerializer
 
@@ -96,7 +88,6 @@ class PrecoViewSet(viewsets.ModelViewSet):
 
 
 class ProfessorViewSet(viewsets.ModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     queryset = Professor.objects.filter(ativo=True)
     serializer_class = ProfessorSerializer
 
@@ -109,7 +100,6 @@ class ProfessorViewSet(viewsets.ModelViewSet):
 
 
 class DisciplinaViewSet(viewsets.ModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     """
     Cadastro de Disciplinas
     """
@@ -125,7 +115,6 @@ class DisciplinaViewSet(viewsets.ModelViewSet):
 
 
 class FornecedorViewSet(viewsets.ModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     queryset = Fornecedor.objects.filter(ativo=True)
     serializer_class = FornecedorSerializer
 
@@ -144,13 +133,11 @@ class NotaFiscalViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class ItemNotaFiscalViewSet(viewsets.ReadOnlyModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     queryset = ItemNotaFiscal.objects.filter(ativo=True)
     serializer_class = ItemNotaFicalSerializer
 
 
 class LaboratorioViewSet(viewsets.ModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     queryset = Laboratorio.objects.filter(ativo=True)
     serializer_class = LaboratorioSerializer
 
@@ -163,7 +150,6 @@ class LaboratorioViewSet(viewsets.ModelViewSet):
 
 
 class AulaReceitaViewSet(viewsets.ModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     queryset = AulaReceita.objects.filter(ativo=True)
     serializer_class = AulaReceitaSerializer
 
@@ -176,7 +162,6 @@ class AulaReceitaViewSet(viewsets.ModelViewSet):
 
 
 class AulaViewSet(viewsets.ModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     queryset = Aula.objects.filter(ativo=True)
     serializer_class = AulaSerializer
 
@@ -200,7 +185,6 @@ class AulaViewSet(viewsets.ModelViewSet):
 
 
 class MovimentoViewSet(viewsets.ModelViewSet):
-    permissions_class = (IsInAuthorizedGroup,)
     queryset = Movimento.objects.filter(ativo=True)
     serializer_class = MovimentoSerializer
 
@@ -288,8 +272,6 @@ class PosicaoEstoqueApiView(APIView):
 
 
 class NecessidadeCompraApiView(APIView):
-    permissions_class = (IsInAuthorizedGroup,)
-
     def get(self, request, format=None):
         data = request.query_params.get('data')
         confirmada = request.query_params.get('data')
